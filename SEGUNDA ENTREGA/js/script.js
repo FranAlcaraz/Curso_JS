@@ -1,13 +1,14 @@
 'use strict'
 
 class producto {
-    constructor(id, nombre, precio, detalle, marca, cantidad){
+    constructor(id, nombre, precio, detalle, marca, cantidad, categoria){
         this.id = id;
         this.nombre = nombre;
         this.precio = parseFloat(precio);
         this.detalle =  detalle;
         this.marca = marca;
-        this.cantidad = cantidad;
+        this.cantidad = parseInt(cantidad);
+        this.categoria = categoria;
     }
 
 
@@ -30,12 +31,7 @@ class categoria{
     }
 }
 
-class marcas{
-    constructor (id, nombre){
-        this.id = id;
-        this.nombre =nombre;
-    }
-}
+
 
 var productos =[];
 var categorias =[];
@@ -50,8 +46,15 @@ do {
         var marcaC = prompt ("ingrese la marca");
         categorias.push(new categoria(idC, nombreC, marcaC));
     }else{
-        if (inicio === "productos" || inicio === "PRODUCTOS"){
-            var idP
+        if (inicio === "productos" || inicio === "PRODUCTOS" || inicio === "producto" || inicio === "PRODUCTO"){
+            var idP = prompt("ingrese el ID");
+            var nombreP = prompt("ingrese el nombre");
+            var precioP = prompt("ingrese el precio");
+            var detalleP = prompt("ingrese detalle (opcional)");
+            var marcaP = prompt("ingrese la marca");
+            var cantidadP = prompt("ingrse una cantidad");
+            var categoriaP = prompt("ingrese una categoria valida");
+            productos.push(new producto(idP,nombreP, precioP, detalleP, marcaP,cantidadP, categoriaP));
 
         }else{
             if (inicio === "" || inicio === " "|| inicio ==="nada"){
