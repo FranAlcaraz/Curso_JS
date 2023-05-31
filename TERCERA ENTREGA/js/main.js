@@ -31,6 +31,11 @@ class categoria{
     }
 }
 
+let idP = 0;
+
+function autoID(){
+    idP++;
+}
 
 
 let productos =[];
@@ -38,3 +43,23 @@ let categorias =[];
 
 let carrito =[];
 
+
+
+let formulario = document.getElementById("formProductos");
+
+formulario.addEventListener("submit", (e) =>{
+    e.preventDefault();
+
+
+    let nombre = document.getElementById("nombre").value;
+    let precio = document.getElementById("precio").value;
+    let detalle = document.getElementById("detalle").value;
+    let marca = document.getElementById("marca").value;
+    let cantidad = document.getElementById("cantidad").value;
+    let categoria = document.getElementById("categoria").value;
+
+    
+    let productop = new producto(autoID(), nombre, precio, detalle, marca, cantidad, categoria); 
+    productos.push(productop);
+    console.log(productos);
+})
