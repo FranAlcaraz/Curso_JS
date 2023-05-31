@@ -62,4 +62,15 @@ formulario.addEventListener("submit", (e) =>{
     let productop = new producto(autoID(), nombre, precio, detalle, marca, cantidad, categoria); 
     productos.push(productop);
     console.log(productos);
-})
+
+    formulario.reset();
+
+
+});
+
+let contenedor = document.getElementById("contenedor");
+
+
+function listarProductos(){
+
+}
