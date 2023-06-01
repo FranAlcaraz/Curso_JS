@@ -30,22 +30,13 @@ function autoID(){
 }
 
 
-let productos =[];
 
 let carrito =[];
-
-
-
-
-
-
-
 
 
 let bodyTable = document.getElementById("cuerpo");
   
 function completarTabla() {
-
 
   productos.forEach((producto) => {
     let div = document.createElement("div");
@@ -90,6 +81,5 @@ function listarProductos(){
 
 }
 
-
-
 completarTabla();
+
