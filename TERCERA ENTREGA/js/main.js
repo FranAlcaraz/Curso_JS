@@ -1,11 +1,11 @@
 'use strict'
 
 class producto {
-    constructor(id, nombre, precio, detalle, marca, cantidad, categoria){
+    constructor(id, nombre, precio, img, marca, cantidad, categoria){
         this.id = id;
         this.nombre = nombre;
         this.precio = parseFloat(precio);
-        this.detalle =  detalle;
+        this.img =  img;
         this.marca = marca;
         this.cantidad = parseInt(cantidad);
         this.categoria = categoria;
@@ -23,14 +23,6 @@ class producto {
 
 }
 
-class categoria{
-    constructor (id, nombre, marca){
-        this.id = id;
-        this.nombre = nombre;
-        this.marca = marca;
-    }
-}
-
 let idP = 0;
 
 function autoID(){
@@ -39,11 +31,33 @@ function autoID(){
 
 
 let productos =[];
-let categorias =[];
 
 let carrito =[];
 
 
+
+
+
+
+
+
+
+let bodyTable = document.getElementById("cuerpo");
+  
+function completarTabla() {
+
+
+  productos.forEach((producto) => {
+    let div = document.createElement("div");
+    div.className="card";
+    div.id="prod"
+    div.innerHTML =`<img src=${producto.img} class='card-img-top'> 
+    <div class='card-body'><h5 class='card-title'>${producto.nombre} 
+    </h5> <p class='card-text'>$ ${producto.precio}</p>
+    <p class='card-text'>Stock: ${producto.cantidad}</p></div>`
+    bodyTable.appendChild(div);
+  });
+}
 
 let formulario = document.getElementById("formProductos");
 
@@ -53,17 +67,18 @@ formulario.addEventListener("submit", (e) =>{
 
     let nombre = document.getElementById("nombre").value;
     let precio = document.getElementById("precio").value;
-    let detalle = document.getElementById("detalle").value;
+    let img = document.getElementById("img").value;
     let marca = document.getElementById("marca").value;
     let cantidad = document.getElementById("cantidad").value;
     let categoria = document.getElementById("categoria").value;
-
+    autoID();
     
-    let productop = new producto(autoID(), nombre, precio, detalle, marca, cantidad, categoria); 
+    let productop = new producto(idP, nombre, precio, img, marca, cantidad, categoria); 
     productos.push(productop);
     console.log(productos);
 
     formulario.reset();
+    completarTabla();
 
 
 });
@@ -74,3 +89,7 @@ let contenedor = document.getElementById("contenedor");
 function listarProductos(){
 
 }
+
+
+
+completarTabla();
