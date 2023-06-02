@@ -1,5 +1,5 @@
 'use strict'
-class producto {
+/* class producto {
     constructor(id, nombre, precio, img, marca, cantidad, categoria){
         this.id = id;
         this.nombre = nombre;
@@ -10,7 +10,7 @@ class producto {
         this.categoria = categoria;
     }
 }
+ */
 
 
-let productos =[];
 

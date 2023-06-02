@@ -20,19 +20,29 @@ class producto {
         return(this.nombre + " "+this.precio);
     }
 
-
 }
 
 let idP = 0;
+let productos =[];
 
 function autoID(){
     idP++;
 }
 
+function guardarLista(){
 
+    localStorage.clear();   
+    //localStorage.setItem("listaProductos",JSON.stringify(productos));
+    console.log("La lista se ha guardado con " + productos.length + " productos:");
+    for(let i of productos){
+        localStorage.setItem(i.id, JSON.stringify(i));
+        console.log(i.toString());
+        const data = localStorage.getItem(i.id);
+        console.log("data", JSON.parse(data));
+    }
+} 
 
 let carrito =[];
-
 
 let bodyTable = document.getElementById("cuerpo");
   
@@ -49,6 +59,8 @@ function completarTabla() {
     bodyTable.appendChild(div);
   });
 }
+
+//completarTabla();
 
 let formulario = document.getElementById("formProductos");
 
@@ -69,7 +81,8 @@ formulario.addEventListener("submit", (e) =>{
     console.log(productos);
 
     formulario.reset();
-    completarTabla();
+    //completarTabla();
+    guardarLista();
 
 
 });
@@ -82,4 +95,8 @@ function listarProductos(){
 }
 
 completarTabla();
+
+
+
+
 
