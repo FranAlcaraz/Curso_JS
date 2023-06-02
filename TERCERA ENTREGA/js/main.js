@@ -1,5 +1,4 @@
 'use strict'
-
 class producto {
     constructor(id, nombre, precio, img, marca, cantidad, categoria){
         this.id = id;
@@ -16,14 +15,11 @@ class producto {
         return this.precio * 1.21;
     }
 
-    visualizar() {
-        return(this.nombre + " "+this.precio);
-    }
-
 }
 
 let idP = 0;
 let productos =[];
+let carrito =[];
 
 function autoID(){
     idP++;
@@ -31,21 +27,21 @@ function autoID(){
 
 function guardarLista(){
 
-    localStorage.clear();   
+    //localStorage.clear();   
     //localStorage.setItem("listaProductos",JSON.stringify(productos));
     console.log("La lista se ha guardado con " + productos.length + " productos:");
     for(let i of productos){
         localStorage.setItem(i.id, JSON.stringify(i));
         console.log(i.toString());
-        const data = localStorage.getItem(i.id);
-        console.log("data", JSON.parse(data));
+        
+
     }
 } 
 
-let carrito =[];
+guardarLista();
 
 let bodyTable = document.getElementById("cuerpo");
-  
+
 function completarTabla() {
 
   productos.forEach((producto) => {
@@ -58,9 +54,10 @@ function completarTabla() {
     <p class='card-text'>Stock: ${producto.cantidad}</p></div>`
     bodyTable.appendChild(div);
   });
-}
+}   
 
-//completarTabla();
+completarTabla();
+
 
 let formulario = document.getElementById("formProductos");
 
@@ -81,18 +78,13 @@ formulario.addEventListener("submit", (e) =>{
     console.log(productos);
 
     formulario.reset();
-    //completarTabla();
+    completarTabla();
     guardarLista();
 
 
 });
 
 let contenedor = document.getElementById("contenedor");
-
-
-function listarProductos(){
-
-}
 
 completarTabla();
 
