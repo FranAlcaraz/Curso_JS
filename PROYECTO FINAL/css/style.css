@@ -1,0 +1,18 @@
+body {
+  margin: 1px;
+}
+
+.filtro {
+  display: flex;
+  justify-content: space-around;
+}
+
+#f {
+  margin: 0 0 0 0;
+}
+
+.card-personalizada {
+  width: 300px
+}
+
+/*# sourceMappingURL=style.css.map */

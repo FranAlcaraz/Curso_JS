@@ -1,0 +1,12 @@
+[
+{ "id":1, "nombre":"Remera Azul", "precio": 2500, "img":"../assets/r_azul.jpg", "marca" : "", "cantidad":"", "categoria":"remera"},
+{ "id":2, "nombre":"Remera Negra", "precio": 2500, "img":"../assets/r_negra.jpg", "marca" : "", "cantidad":"", "categoria":"remera"},
+{ "id":3, "nombre":"Remera Rosa", "precio": 2500, "img":"../assets/r_rosa.webp", "marca" : "", "cantidad":"", "categoria":"remera"},
+{ "id":4,"nombre":"Remera roja", "precio": 2500, "img":"../assets/r_roja.webp", "marca" : "", "cantidad":"", "categoria":"remera"},
+{ "id":5, "nombre":"Remera blanca"," precio": 2500, "img":"../assets/r_blanca.jpg", "marca" : "", "cantidad":"", "categoria":"remera"},
+{ "id":6, "nombre":"Pantalon Gris", "precio": 3500, "img":"../assets/p_gris.jpeg", "marca" : "", "cantidad":"", "categoria":"pantalon"},
+{ "id":7, "nombre":"Pantalon Jean", "precio": 4500, "img":"../assets/p_jean.webp", "marca" : "", "cantidad":"", "categoria":"pantalon"},
+{ "id":8, "nombre":"Pollera Azul", "precio": 3500, "img":"../assets/p_azul.jpg", "marca" : "", "cantidad":"", "categoria":"pollera"},
+{ "id":9, "nombre":"Gorra Roja", "precio": 1500, "img":"../assets/g_rojA.webp", "marca" : "", "cantidad":"", "categoria":"gorra"},
+{ "id":10, "nombre":"Buzo Negro Diseño", "precio": 9000, "img":"../assets/b_diseño.webp", "marca" : "", "cantidad":"", "categoria":"buzo"}]
+
