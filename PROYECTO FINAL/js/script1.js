@@ -1,21 +1,27 @@
 // Array para almacenar productos seleccionados
 let carroDeCompras = [];
-
+//
 const productosElegidos = document.getElementById('miCarroCompras');
+//donde se van a dibujar los productos
 let bodyTable = document.getElementById("cuerpo");
+//boton que abre el carro de compras
 let botonCarrito = document.getElementById('abrirCarrito');
+//
 const agregados = document.getElementById('itemAgregado');
+//traigo donde muestra el precio de los productos seleccionados
 const precioTotal = document.getElementById('precioTotal');
+//con que se filtran los productos
 let elegirPorqueFiltrar = document.querySelectorAll('input[type="radio"]');
+//array de los productos filtrados
 let ArrayFilter = [];
 
 elegirPorqueFiltrar.forEach((check) => check.addEventListener("change", handleChange));
-
+//funcion que hace el filtrado de los productos
 function handleChange() {
   bodyTable.innerHTML = "";
   const checkeds = Array.from(elegirPorqueFiltrar).filter((checkbox) => checkbox.checked);
   const checkedValue = checkeds.map((checkbox) => checkbox.value);
-
+//checkeo con que variables ee filtran los productos
   if (checkedValue == "all") {
     ArrayFilter = productos;
   } else if (checkedValue == "pantalon") {
@@ -29,17 +35,18 @@ function handleChange() {
   } else if (checkedValue == "vestido") {
     ArrayFilter = productos.filter((producto) => producto.categoria == "vestido");
   }
-
+//se inicia en all
   completarTabla(ArrayFilter);
 }
-
+//muestro todos los productos
 completarTabla(productos); 
-
+//funcion para completar todos los productos segun el filtro.
 function completarTabla(prod) {
   bodyTable.innerHTML = '';
-
+//se dibuja cada card de los productos.
   for (const producto of prod) {
     let div = document.createElement("div");
+    //la card personalizada hace que el tamaño de cada producto no ocupe el total de la pagina
     div.className = "card card-personalizada";
     div.innerHTML = `<img src=${producto.img} class='card-img-top'> <div class='card-body'>
       <h5 class='card-title'>${producto.nombre} </h5> <p class='card-text'>$ ${producto.precio}</p>
@@ -47,15 +54,13 @@ function completarTabla(prod) {
       <button type="button" class="btn btn-primary producto" id="producto_${producto.id}">Agregar al Carrito</button>
     </div>`;
     bodyTable.appendChild(div);
-
+// al button de agregar producto, se le aplica Toastify para notificar si el producto se agrego correctamente
     let botonAgregar = document.getElementById(`producto_${producto.id}`);
     botonAgregar.addEventListener('click', () => {
       console.log(producto.nombre);
       Toastify({
         text: `${producto.nombre} agregado a tu carrito con éxito`,
         duration: 1000,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
         close: true,
         gravity: "bottom",
         position: "right",
@@ -67,7 +72,7 @@ function completarTabla(prod) {
     });
   }
 }
-
+//funcion para agregar el producto al array del carrito, dependiendo si ya tengo el producto agregado o si agrego uno nuevo
 function agregarProducto(id) {
   let agregar = carroDeCompras.find(item => item.id == id);
 
@@ -103,8 +108,6 @@ function agregarProducto(id) {
       Toastify({
         text: `${agregarProducto.nombre} Eliminado de tu carrito`,
         duration: 1200,
-        destination: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
         close: true,
         gravity: "bottom",
         position: "right",
@@ -121,7 +124,7 @@ function agregarProducto(id) {
   localStorage.setItem('carrito', JSON.stringify(carroDeCompras));
 
 }
-
+//modifico el carro de compras, teniendo en cuenta la cantidad de prpoductos agregados o eliminados, como tambien el precio 
 function actualizarCarrito() {
   const cantidadTotal = carroDeCompras.reduce((acc, el) => acc + el.cantidad, 0);
   const precioTotalCarrito = carroDeCompras.reduce((acc, el) => acc + (el.precio * el.cantidad), 0);
@@ -129,7 +132,7 @@ function actualizarCarrito() {
   precioTotal.innerText = precioTotalCarrito;
 }
 
-
+//funcion para que cuando se recargue la pagina, no pierda los productos seleccionados
 function mantenerCarrito (){
   let carritoStorage = JSON.parse(localStorage.getItem('carrito'))
   
