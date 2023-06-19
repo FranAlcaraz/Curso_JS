@@ -1,5 +1,6 @@
 const productos = [ 
     {
+        id : 1,
         nombre:"pantalon Wara Marron",
         precio: 3200,
         stock:10,
@@ -7,6 +8,7 @@ const productos = [
         img :"https://i.ibb.co/RHkdMtM/webchicoana-11.jpg",
     },
     {
+        id : 2,
         nombre:"pantalon Wara Crudo",
         precio: 3200,
         stock:10,
@@ -14,6 +16,7 @@ const productos = [
         img :"https://i.ibb.co/YXDF0gy/webchicoana-15.jpg",
     },
     {
+        id : 3,
         nombre:"Blusa Nina Verde",
         precio:1400,
         stock:14,
@@ -21,6 +24,7 @@ const productos = [
         img :"https://i.ibb.co/HnJYmDM/webchicoana-46.jpg",
     },
     {
+        id :3 ,
         nombre:"Blusa Nina Rosa",
         precio:1400,
         stock:14,
@@ -28,6 +32,7 @@ const productos = [
         img :"https://i.ibb.co/0Fh2nzp/webchicoana-37.jpg",
     },
     {
+        id :4,
         nombre:" Top Chari Blanco",
         precio:1000,
         stock:12,
@@ -35,6 +40,7 @@ const productos = [
         img :"https://i.ibb.co/wQFFJJd/webchicoana-63.jpg",
     },
     {
+        id :5,
         nombre:"Top Chari Celeste",
         precio:1000,
         stock:12,
@@ -42,6 +48,7 @@ const productos = [
         img :"https://i.ibb.co/mtD1fVL/webchicoana-19.jpg",
     },
     {
+        id :6,
         nombre:"Entero Amuk Verde",
         precio:2800,
         stock:22,
@@ -49,6 +56,7 @@ const productos = [
         img :"https://i.ibb.co/NNgNd3B/webchicoana.jpg",
     },
     {
+        id :7,
         nombre:"Entero Amuk Camel",
         precio:2800,
         stock:22,
@@ -56,6 +64,7 @@ const productos = [
         img :"https://i.ibb.co/grhNjfS/webchicoana-32.jpg",
     },
     {
+        id :8,
         nombre:"Vestido Samay Tostado",
         precio: 2000,
         stock:7,
@@ -63,6 +72,7 @@ const productos = [
         img :"https://i.ibb.co/zS90FWB/webchicoana-30.jpg",
     },
     {
+        id :9,
         nombre:"Vestido Samay Lila",
         precio: 2000,
         stock:7,

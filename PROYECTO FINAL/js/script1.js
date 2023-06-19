@@ -1,5 +1,7 @@
+//constructor de clase Producto 
 class producto {
-    constructor(nombre, categoria, precio, stock, img) {
+    constructor(id, nombre, categoria, precio, stock, img) {
+      this.id = id;
       this.nombre = nombre;
       this.precio = parseFloat(precio);
       this.disponible = true;
@@ -20,25 +22,48 @@ class producto {
       this.disponible = false;
     }
   }
-  
+//array para almacenar productos seleccionados
+let carroDeCompras = [];
+    
+const productosElegidos = document.getElementById('mi-carrito');
+
+let botonCarrito = document.getElementById('openCarro');
+
+const agregados = document.getElementById('agregados')
+
+const precioTotal = document.getElementById('precioTotal');
+
+
+
+  //obtengo el cuerpo donde se muestran los productos del JS productos
   let bodyTable = document.getElementById("cuerpo");
-  
+  //muestro todos los productos
   function completarTabla() {
     productos.forEach((producto) => {
       let div = document.createElement("div");
       div.className="card";
-      div.innerHTML =`<img src=${producto.img} class='card-img-top'> <div class='card-body'><h5 class='card-title'>${producto.nombre} </h5> <p class='card-text'>$ ${producto.precio}</p><p class='card-text'>Stock: ${producto.stock}</p></div>`
+      div.innerHTML =`<img src=${producto.img} class='card-img-top'> <div class='card-body'>
+      <h5 class='card-title'>${producto.nombre} </h5> <p class='card-text'>$ ${producto.precio}</p>
+      <p class='card-text'>Stock: ${producto.stock}</p>
+      <button type="button" class="btn btn-primary" class="producto" id="producto_${producto.id}">Agregar al Carrito
+      </button></div>`
       bodyTable.appendChild(div);
+
     });
   }
   
   completarTabla();
-  
+
+  //funcion para filtrar los prodcutos por categoria
   function filtrarTabla(array) {
     array.forEach((producto) => {
         let div = document.createElement("div");
         div.className="card card-personalizada";
-      div.innerHTML =`<img src=${producto.img} class='card-img-top'> <div class='card-body'><h5 class='card-title'>${producto.nombre} </h5> <p class='card-text'>$ ${producto.precio}</p><p class='card-text'>Stock: ${producto.stock}</p></div>`
+      div.innerHTML =`<img src=${producto.img} class='card-img-top'> <div class='card-body'>
+      <h5 class='card-title'>${producto.nombre}</h5> <p class='card-text'>$ ${producto.precio}</p>
+      <p class='card-text'>Stock: ${producto.stock}</p>
+      <button type="button" class="btn btn-primary" class="producto" id="producto_${producto.id}">Agregar al Carrito
+      </button></div>`
     bodyTable.appendChild(div);
     });
   }
@@ -105,15 +130,4 @@ class producto {
   
     filtrarTabla(ArrayFilter);
   }
-  
-
-  function guardarLista(){
-    localStorage.setItem("listaProductos",JSON.stringify(productos));
-    console.log("La lista se ha guardado con " + productos.length + " productos:");
-    for(producto of productos){
-        console.log(producto.toString());
-    }
-}
-
-guardarLista();
 
