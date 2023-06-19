@@ -12,69 +12,9 @@ const agregados = document.getElementById('itemAgregado')
 
 const precioTotal = document.getElementById('precioTotal');
 
-let elegirPorqueFiltrar = document.querySelectorAll('input[type="radio"]');
+completarTabla(productos);
 
-let ArrayFilter = [];
-
-elegirPorqueFiltrar.forEach((check) =>
-  check.addEventListener("change", handleChange),
-);
-
-function handleChange() {
-    
-  bodyTable.innerHTML = "";
-
-  
-  const checkeds = Array.from(elegirPorqueFiltrar).filter(
-    (checkbox) => checkbox.checked,
-    );
-    
-    
-    const checkedValue = checkeds.map((checkbox) => checkbox.value);
-    
-    
-
-  
-  if (checkedValue == "all") {
-    
-    ArrayFilter = productos;
-  } else if (checkedValue == "pantalon") {
-    
-    ArrayFilter = productos.filter(
-      (producto) => producto.categoria == "pantalon",
-      );
-    } else if (checkedValue == "blusa") {
-    
-    ArrayFilter = productos.filter(
-      (producto) => producto.categoria == "blusa",
-    );
-  } else if (checkedValue == "entero") {
-    
-    ArrayFilter = productos.filter(
-      (producto) => producto.categoria == "entero",
-      );
-    } else if (checkedValue == "top") {
-      
-      ArrayFilter = productos.filter((producto) => producto.categoria == "top");
-    } else if (checkedValue == "vestido") {
-      
-      ArrayFilter = productos.filter(
-        (producto) => producto.categoria == "vestido",
-        );
-      }
-      
-      
-      
-      completarTabla(ArrayFilter);
-    }
-    
-    completarTabla(productos); x
-    
-    function completarTabla(prod){
-      
-      
-
-
+function completarTabla(prod){
   bodyTable.innerHTML='';
 
   for(const producto of prod){
@@ -190,5 +130,99 @@ function actualizarCarrito(){
   precioTotal.innerText = carroDeCompras.reduce((acc,el)=> acc + (el.precio * el.cantidad), 0)
   }
 
+  //funcion para filtrar los prodcutos por categoria
+  function filtrarTabla(array) {
+    array.forEach((producto) => {
+        let div = document.createElement("div");
+        div.className="card card-personalizada";
+      div.innerHTML =`<img src=${producto.img} class='card-img-top'> <div class='card-body'>
+      <h5 class='card-title'>${producto.nombre}</h5> <p class='card-text'>$ ${producto.precio}</p>
+      <p class='card-text'>Stock: ${producto.stock}</p>
+      <button type="button" class="btn btn-primary" class="producto" id="producto_${producto.id}">Agregar al Carrito
+      </button></div>`
+    bodyTable.appendChild(div);
+    let botonAgregar = document.getElementById(`producto_${producto.id}`)
+    botonAgregar.addEventListener('click', () => {
+      console.log(producto.nombre);
+      Toastify({
+        text: `${producto.nombre} agregado a tu carrito con éxito`,
+        duration: 1000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "bottom", 
+        position: "right", 
+        stopOnFocus: true, 
+        style: {
+          background: "linear-gradient(to left,#6dadfa  , #2ac070 )",
+        },
+        onClick: function(){}
+      }).showToast();
+    })
+    agregarProducto(producto.id)
+    });
+  }
   
   
+  let elegirPorqueFiltrar = document.querySelectorAll('input[type="radio"]');
+  
+  console.log(elegirPorqueFiltrar);
+  
+  elegirPorqueFiltrar.forEach((check) => console.log(check));
+  
+  
+  elegirPorqueFiltrar.forEach((check) =>
+    check.addEventListener("change", handleChange),
+  );
+  
+  
+  
+  function handleChange() {
+    
+    bodyTable.innerHTML = "";
+  
+    
+    const checkeds = Array.from(elegirPorqueFiltrar).filter(
+      (checkbox) => checkbox.checked,
+    );
+  
+    
+    const checkedValue = checkeds.map((checkbox) => checkbox.value);
+  
+    
+    let ArrayFilter = [];
+  
+  
+    if (checkedValue == "all") {
+      
+      ArrayFilter = productos;
+    } else if (checkedValue == "pantalon") {
+      
+      ArrayFilter = productos.filter(
+        (producto) => producto.categoria == "pantalon",
+      );
+    } else if (checkedValue == "blusa") {
+      
+      ArrayFilter = productos.filter(
+        (producto) => producto.categoria == "blusa",
+      );
+    } else if (checkedValue == "entero") {
+      
+      ArrayFilter = productos.filter(
+        (producto) => producto.categoria == "entero",
+      );
+    } else if (checkedValue == "top") {
+      
+      ArrayFilter = productos.filter((producto) => producto.categoria == "top");
+    } else if (checkedValue == "vestido") {
+      
+      ArrayFilter = productos.filter(
+        (producto) => producto.categoria == "vestido",
+      );
+    }
+  
+  
+  
+    filtrarTabla(ArrayFilter);
+  }
+
